@@ -329,3 +329,63 @@
 .sws-rail-arrow:hover {
     background: color-mix(in srgb, var(--sws-accent) 18%, transparent);
 }
+
+/* Phone: keep controls thumb-sized and avoid a wrapping layout toolbar stealing
+ * pane height. The first mobile open uses Stack; users may still choose another
+ * preset explicitly. */
+@media screen and (max-width: 768px) {
+    .sws-toolbar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sws-toolbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sws-toolbar-button {
+        flex: 0 0 auto;
+        min-height: 44px;
+        padding: 8px 12px;
+    }
+
+    .sws-tree {
+        padding: 4px;
+    }
+
+    .sws-cell-header {
+        min-height: 44px;
+        padding: 4px 6px;
+    }
+
+    .sws-grip {
+        display: grid;
+        place-items: center;
+        min-width: 40px;
+        min-height: 40px;
+        padding: 0;
+        touch-action: none;
+    }
+
+    .sws-cell-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .sws-divider {
+        flex-basis: 10px;
+    }
+
+    .sws-rail-arrow {
+        width: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .sws-rail > button,
+    .sws-rail > [role="button"] {
+        min-height: 44px;
+    }
+}

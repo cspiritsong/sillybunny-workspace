@@ -1,10 +1,11 @@
 /**
- * SillyBunny Workspace — SillyTavern/SillyBunny extension entry point.
+ * SillyBunny Workspace — SillyBunny extension entry point.
  * All SillyTavern knowledge is confined to this file: settings persistence,
  * the pane registry, whitelisted rail selectors, and lifecycle hooks. The
  * workspace and rail engines are context-free.
  */
 
+import { PRESETS } from './src/layout.js';
 import { startRailController } from './src/rail.js';
 import { Workspace } from './src/workspace.js';
 
@@ -14,7 +15,7 @@ const DEFAULT_SETTINGS = {
     enabled: false,
     editMode: false,
     layout: null,          // null → columns preset via normalizeLayout
-    mobileLayout: null,
+    mobileLayout: null,    // null → vertical stack on first mobile open
     rails: true,
 };
 
@@ -77,7 +78,7 @@ function toast(msg) {
 function currentLayout() {
     const s = settings();
     const isMobile = getContext().isMobile?.();
-    return isMobile ? s.mobileLayout : s.layout;
+    return isMobile ? (s.mobileLayout ?? PRESETS.stack()) : s.layout;
 }
 
 function saveLayout(layout) {
