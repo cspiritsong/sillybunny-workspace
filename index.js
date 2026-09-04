@@ -98,6 +98,7 @@ function createWorkspace() {
     }
     workspace = new Workspace({
         panes: PANE_DEFS,
+        defaultPreset: getContext().isMobile?.() ? 'stack' : 'columns',
         onChange: saveLayout,
         onToast: toast,
     });

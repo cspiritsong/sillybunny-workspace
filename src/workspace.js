@@ -29,12 +29,14 @@ export class Workspace {
      * @param {object} opts
      * @param {Array<{id: string, label: string, selector: string}>} opts.panes
      * @param {(layout: object) => void} opts.onChange   persist callback (post-commit)
+     * @param {'columns'|'stack'|'abOverC'} [opts.defaultPreset='columns']
      * @param {(msg: string) => void} [opts.onToast]
      */
     constructor(opts) {
         this.paneDefs = opts.panes;
         this.onChange = opts.onChange;
         this.onToast = opts.onToast || (() => {});
+        this.defaultPreset = PRESETS[opts.defaultPreset] ? opts.defaultPreset : 'columns';
         this.layout = null;
         this.overlay = null;
         this.treeEl = null;
@@ -118,7 +120,7 @@ export class Workspace {
     }
 
     reset() {
-        this.applyPreset('columns');
+        this.applyPreset(this.defaultPreset);
     }
 
     // ---- tree mutation helpers (thin wrappers so tests can stay DOM-free) ----
