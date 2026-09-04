@@ -35,12 +35,14 @@ Installed copies are never edited directly. SillyTavern is never used as an inst
 
 ### Stage 2 — Windows Canary (port 4445)
 
-- [ ] Locate the live SillyBunny Canary user extension directory; do not assume its path.
+- [x] Locate the live SillyBunny Canary user extension directory; do not assume its path.
 - [x] First Windows clone exposed case-colliding lowercase documentation symlinks; no plugin load attempted.
 - [x] Publish v0.1.1 packaging fix; remote tree verified to contain only canonical uppercase contract files.
-- [ ] Replace the failed fresh Canary clone with v0.1.1 and verify a clean checkout. Blocked: Windows laptop went offline before the replacement command reached it.
-- [ ] Start/verify Canary and confirm the extension loads without console errors.
-- [ ] Exercise overflow rails, all three layout presets, drag/dock, splitter resize, maximize, hide/reopen, reset, close restoration, disable restoration, and restart persistence.
+- [x] Replace the failed fresh Canary clone with v0.1.1 and verify a clean checkout.
+- [x] Start Canary headlessly (Task Scheduler, survives SSH), confirm extension registers: discover endpoint lists `third-party/sillybunny-workspace`; activate hook completes.
+- [x] Fix activate-vs-enable mount bug as v0.1.2; pull on Canary; 7/7 live-load checks green (boot, settings key/block, global API, stylesheet, rails mounted, zero workspace errors).
+- [x] Install/update from the same verified Git revision — exact tip ee5a400f6a720264c339028ab5cd4022551e95f1.
+- [ ] Exercise the interactive acceptance matrix: open Workspace, all three layout presets, drag/dock, splitter resize, maximize, hide/reopen, reset, close restoration, disable restoration, and restart persistence.
 - [ ] Record failures with exact steps and browser console evidence.
 
 ### Stage 3 — Windows stock (port 4444)
