@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Verified — canonical repository is live.** Public repository `https://github.com/cspiritsong/sillybunny-workspace` was read back with default branch `main`, cspiritsong commit authorship, and live `manifest.json` version `0.1.0`. Next gate: install this exact Git source into SillyBunny Canary on Windows.
+**Verified — Windows Canary complete on v0.1.3.** Public repository `https://github.com/cspiritsong/sillybunny-workspace` is canonical. Canary clean-cloned exact tip `73f0a62d431b48740dda14498971c785503dc36a`; 7/7 live-load and 13/13 interaction checks pass. Visual screenshots confirm full-width columns/stack, visible host content, and no material overlap or clipping. Next gate: install the same verified revision into Windows SillyBunny stock (4444).
 
 ## Delivery loop
 
@@ -41,9 +41,10 @@ Installed copies are never edited directly. SillyTavern is never used as an inst
 - [x] Replace the failed fresh Canary clone with v0.1.1 and verify a clean checkout.
 - [x] Start Canary headlessly (Task Scheduler, survives SSH), confirm extension registers: discover endpoint lists `third-party/sillybunny-workspace`; activate hook completes.
 - [x] Fix activate-vs-enable mount bug as v0.1.2; pull on Canary; 7/7 live-load checks green (boot, settings key/block, global API, stylesheet, rails mounted, zero workspace errors).
-- [x] Install/update from the same verified Git revision — exact tip ee5a400f6a720264c339028ab5cd4022551e95f1.
-- [ ] Exercise the interactive acceptance matrix: open Workspace, all three layout presets, drag/dock, splitter resize, maximize, hide/reopen, reset, close restoration, disable restoration, and restart persistence.
-- [ ] Record failures with exact steps and browser console evidence.
+- [x] Install/update from the same verified Git revision — exact tested tip `73f0a62d431b48740dda14498971c785503dc36a`.
+- [x] Exercise the interactive acceptance matrix: open Workspace, all three layout presets, drag/dock, splitter resize, maximize, hide/reset recovery, close restoration, disable restoration, and restart persistence — 13/13 passed.
+- [x] Visual evidence: 1280×900 Columns and Stack screenshots reviewed; root spans 1264/1280px, each column is 417px, all host width/height deltas are 0px, and no material overlap/clipping remains.
+- [x] Record failures with exact steps and browser console evidence; fixed case-colliding packaging, activate-hook mount, and docked-host sizing in v0.1.1–v0.1.3.
 
 ### Stage 3 — Windows stock (port 4444)
 

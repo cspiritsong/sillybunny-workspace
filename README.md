@@ -32,4 +32,4 @@ npm run test:browser  # headless harness (Playwright on the host)
 
 ## Status
 
-Canonical public repository live at `https://github.com/cspiritsong/sillybunny-workspace`, candidate version `0.1.1`. Local engine + harness verified. Next: clean Git install on Windows SillyBunny Canary (4445), then SillyBunny stock (4444), then a physical phone.
+Canonical public repository live at `https://github.com/cspiritsong/sillybunny-workspace`, version `0.1.3`. Windows SillyBunny Canary is verified: 7/7 live-load checks, 13/13 interaction checks, and full-width visual review pass. Next: install the exact verified Git revision on Windows SillyBunny stock (4444), then test a physical phone.
