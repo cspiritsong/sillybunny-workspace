@@ -16,6 +16,7 @@ Deliver a lightweight extension that turns approved dense menus into single-row 
 ## Rules
 - SillyBunny-only plugin. Never install or test it in SillyTavern.
 - The GitHub repository is canonical. Every installed copy must come from a committed and pushed revision; installed folders are not edited directly.
+- Cross-platform packaging: the public repository must not track symlinks or lowercase aliases whose names differ from contract files only by case; those collide on Windows.
 - Opt-in workspace; opening it is reversible and disabling restores the original DOM.
 - No heavy framework or continuous polling.
 - Default layouts: side-by-side three columns; vertical stack; A+B over spanning C.

@@ -4,3 +4,11 @@ test-results/
 .DS_Store
 *.log
 coverage/
+
+# Local convenience aliases are intentionally not shipped: Git symlinks whose
+# names differ only by case collide with AGENTS.md/PLAN.md/etc. on Windows.
+agents.md
+project.md
+plan.md
+readme.md
+discussions/plans

@@ -36,7 +36,8 @@ Installed copies are never edited directly. SillyTavern is never used as an inst
 ### Stage 2 — Windows Canary (port 4445)
 
 - [ ] Locate the live SillyBunny Canary user extension directory; do not assume its path.
-- [ ] Install by cloning the canonical GitHub repository.
+- [x] First Windows clone exposed case-colliding lowercase documentation symlinks; no plugin load attempted.
+- [ ] Publish v0.1.1 packaging fix (remove tracked symlinks/case-only aliases) and verify a clean Canary clone.
 - [ ] Start/verify Canary and confirm the extension loads without console errors.
 - [ ] Exercise overflow rails, all three layout presets, drag/dock, splitter resize, maximize, hide/reopen, reset, close restoration, disable restoration, and restart persistence.
 - [ ] Record failures with exact steps and browser console evidence.
