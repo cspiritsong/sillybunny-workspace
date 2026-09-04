@@ -37,7 +37,8 @@ Installed copies are never edited directly. SillyTavern is never used as an inst
 
 - [ ] Locate the live SillyBunny Canary user extension directory; do not assume its path.
 - [x] First Windows clone exposed case-colliding lowercase documentation symlinks; no plugin load attempted.
-- [ ] Publish v0.1.1 packaging fix (remove tracked symlinks/case-only aliases) and verify a clean Canary clone.
+- [x] Publish v0.1.1 packaging fix; remote tree verified to contain only canonical uppercase contract files.
+- [ ] Replace the failed fresh Canary clone with v0.1.1 and verify a clean checkout. Blocked: Windows laptop went offline before the replacement command reached it.
 - [ ] Start/verify Canary and confirm the extension loads without console errors.
 - [ ] Exercise overflow rails, all three layout presets, drag/dock, splitter resize, maximize, hide/reopen, reset, close restoration, disable restoration, and restart persistence.
 - [ ] Record failures with exact steps and browser console evidence.
