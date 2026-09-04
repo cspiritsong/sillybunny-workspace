@@ -191,11 +191,20 @@ function stopAllRails() {
     stopRails = null;
 }
 
-export function activate() {
-    settings();
-}
+let mounted = false;
+let readyListener = null;
 
-export function enable() {
+/**
+ * Mount the extension UI. The host calls only the `activate` hook during boot
+ * (the `enable` hook fires solely on user toggles), so the settings drawer,
+ * rails, and auto-open all mount here. DOM readiness is assumed when the hook
+ * runs, but is guarded anyway via APP_READY.
+ */
+function mountExtension() {
+    if (mounted) {
+        return;
+    }
+    mounted = true;
     settings();
     renderSettings();
     startRails();
@@ -204,10 +213,46 @@ export function enable() {
     }
 }
 
-export function disable() {
+function unmountExtension() {
+    if (!mounted) {
+        return;
+    }
+    mounted = false;
     closeWorkspace();
     stopAllRails();
     document.getElementById('sws-settings')?.remove();
+}
+
+export function activate() {
+    const ctx = getContext();
+    if (readyListener) {
+        ctx.eventSource.off?.(ctx.eventTypes?.APP_READY, readyListener);
+    }
+    readyListener = () => mountExtension();
+    if (ctx.eventTypes?.APP_READY) {
+        ctx.eventSource.on(ctx.eventTypes.APP_READY, readyListener);
+        // Fallback: if APP_READY never fires again (already booted), mount now.
+        setTimeout(() => {
+            if (!mounted) {
+                mountExtension();
+            }
+        }, 2000);
+    } else {
+        mountExtension();
+    }
+}
+
+export function enable() {
+    mountExtension();
+}
+
+export function disable() {
+    const ctx = getContext();
+    if (readyListener) {
+        ctx.eventSource.off?.(ctx.eventTypes?.APP_READY, readyListener);
+        readyListener = null;
+    }
+    unmountExtension();
 }
 
 // Expose for other extensions / debugging.
