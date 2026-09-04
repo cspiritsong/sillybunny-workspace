@@ -1,0 +1,290 @@
+/* SillyBunny Workspace — theme-aware, no hardcoded palette. */
+:root {
+    --sws-bg: var(--SmartThemeBlurTintColor, rgb(23, 23, 23));
+    --sws-fg: var(--SmartThemeBodyColor, #ddd);
+    --sws-muted: var(--SmartThemeEmColor, #aaa);
+    --sws-border: var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.4));
+    --sws-accent: var(--SmartThemeQuoteColor, #67c3c4);
+}
+
+/* ---- overlay shell ---- */
+.sws-overlay {
+    position: fixed;
+    top: var(--topBarBlockSize, 0);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    background: var(--sws-bg);
+    overflow: hidden;
+}
+
+.sws-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--sws-border);
+    flex: 0 0 auto;
+}
+
+.sws-toolbar-button {
+    border: 1px solid var(--sws-border);
+    background: transparent;
+    color: var(--sws-fg);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    min-height: 36px;
+}
+
+.sws-toolbar-button:hover {
+    background: color-mix(in srgb, var(--sws-muted) 18%, transparent);
+}
+
+.sws-toolbar-button.sws-active {
+    border-color: var(--sws-accent);
+    color: var(--sws-accent);
+}
+
+/* ---- tree layout ---- */
+.sws-tree {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    padding: 8px;
+    gap: 0;
+    overflow: hidden;
+}
+
+.sws-split {
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+}
+
+.sws-split-row {
+    flex-direction: row;
+}
+
+.sws-split-column {
+    flex-direction: column;
+}
+
+.sws-cell {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    background: color-mix(in srgb, var(--sws-fg) 4%, transparent);
+    border: 1px solid var(--sws-border);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sws-cell-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--sws-border);
+    flex: 0 0 auto;
+}
+
+.sws-grip {
+    cursor: grab;
+    color: var(--sws-muted);
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding: 2px 4px;
+    user-select: none;
+}
+
+.sws-cell-title {
+    flex: 1 1 auto;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--sws-fg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sws-cell-btn {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--sws-muted);
+    cursor: pointer;
+    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+}
+
+.sws-cell-btn:hover {
+    color: var(--sws-fg);
+    background: color-mix(in srgb, var(--sws-muted) 18%, transparent);
+}
+
+.sws-cell-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.sws-cell-body > * {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Maximized: fill the tree area. */
+.sws-cell.sws-maximized {
+    position: fixed;
+    top: calc(var(--topBarBlockSize, 0) + 42px);
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    z-index: 1300;
+}
+
+/* Divider handles */
+.sws-divider {
+    flex: 0 0 6px;
+    background: transparent;
+    position: relative;
+    z-index: 20;
+}
+
+.sws-divider-col {
+    cursor: col-resize;
+}
+
+.sws-divider-row {
+    cursor: row-resize;
+}
+
+.sws-divider::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background: var(--sws-border);
+    opacity: 0.4;
+}
+
+.sws-divider-col::after {
+    width: 2px;
+    height: 60%;
+}
+
+.sws-divider-row::after {
+    height: 2px;
+    width: 60%;
+}
+
+.sws-divider:hover::after {
+    background: var(--sws-accent);
+    opacity: 0.9;
+}
+
+.sws-resizing {
+    cursor: col-resize;
+    user-select: none;
+}
+
+/* Drag-to-dock states */
+.sws-dragging .sws-grip {
+    cursor: grabbing;
+}
+
+.sws-ghost {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2000;
+    padding: 6px 12px;
+    background: var(--sws-accent);
+    color: #000;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.sws-drop {
+    outline: 2px solid var(--sws-accent);
+    outline-offset: -2px;
+}
+
+.sws-drop-left { box-shadow: inset 4px 0 0 var(--sws-accent); }
+.sws-drop-right { box-shadow: inset -4px 0 0 var(--sws-accent); }
+.sws-drop-top { box-shadow: inset 0 4px 0 var(--sws-accent); }
+.sws-drop-bottom { box-shadow: inset 0 -4px 0 var(--sws-accent); }
+
+.sws-cell-missing .sws-cell-body::after {
+    content: 'pane not found';
+    color: var(--sws-muted);
+    margin: auto;
+    font-size: 12px;
+}
+
+/* ---- rail ---- */
+.sws-rail-track {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.sws-rail {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    gap: 4px;
+    padding: 2px 0;
+}
+
+.sws-rail::-webkit-scrollbar {
+    display: none;
+}
+
+.sws-rail > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+.sws-rail-arrow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    min-width: 26px;
+    border: 0;
+    background: transparent;
+    color: var(--sws-accent);
+    font-size: 20px;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.sws-rail-arrow-visible {
+    display: flex;
+}
+
+.sws-rail-arrow:hover {
+    background: color-mix(in srgb, var(--sws-accent) 18%, transparent);
+}

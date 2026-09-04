@@ -1,0 +1,19 @@
+{
+    "display_name": "Workspace",
+    "author": "cspiritsong",
+    "version": "0.1.0",
+    "description": "Scrollable action rails and a lightweight dockable, resizable workspace for SillyBunny and SillyTavern.",
+    "requires": [],
+    "optional": [],
+    "dependencies": [],
+    "js": "index.js",
+    "css": "style.css",
+    "license": "AGPL-3.0",
+    "loading_order": 155,
+    "auto_update": false,
+    "hooks": {
+        "activate": "activate",
+        "enable": "enable",
+        "disable": "disable"
+    }
+}

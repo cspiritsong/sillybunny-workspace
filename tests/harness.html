@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<style>
+    body { margin: 0; min-height: 100vh; }
+    .fake-pane { display: none; }
+    .rail-row { display: flex; width: 400px; }
+    .rail-row .item { flex: 0 0 90px; height: 36px; background: #333; color: #ddd; margin: 0 2px; display: grid; place-items: center; }
+</style>
+</head>
+<body>
+<div id="extensions_settings2"></div>
+
+<!-- Three fake panes the workspace will reparent -->
+<div id="sheld" class="fake-pane" data-home="sheld">CHAT</div>
+<div id="left-nav-panel" class="fake-pane" data-home="settings">SETTINGS</div>
+<div id="right-nav-panel" class="fake-pane" data-home="characters">CHARACTERS</div>
+
+<!-- A whitelisted rail row that overflows -->
+<div id="right-nav-panel-tabs" class="rail-row">
+    <span class="item">Lore</span>
+    <span class="item">Emotes</span>
+    <span class="item">Tools</span>
+    <span class="item">Effects</span>
+    <span class="item">Regex</span>
+    <span class="item">Quick</span>
+</div>
+
+<script>
+window.__ready = false;
+const dispatchLog = [];
+window.DISPATCH_LOG = dispatchLog;
+const ctx = {
+    extensionSettings: {},
+    saveSettingsDebounced() { dispatchLog.push('save'); },
+    isMobile: () => false,
+    t: (s) => s,
+    translate: (s) => s,
+    eventSource: { on() {}, off() {}, removeListener() {} },
+    eventTypes: { APP_READY: 'app_ready', CHAT_CHANGED: 'chat_id_changed', CHAT_LOADED: 'chatLoaded' },
+};
+window.SillyTavern = { getContext: () => ctx };
+window.toastr = { info: () => {}, error: (m) => console.error(m) };
+</script>
+
+<script type="module">
+import * as ext from '../index.js';
+window.EXT = ext;
+window.__ready = true;
+</script>
+</body>
+</html>
