@@ -4,13 +4,18 @@
 Deliver a lightweight extension that turns approved dense menus into single-row swipeable rails and lets users tile, move, and resize registered SillyBunny panes.
 
 ## Map
-- Host reference: `/home/badi/projects/sillybunny-dev/repo`
-- Windows stock: `C:\Users\badiy\SillyBunny` on port 4444
-- Windows Canary: `C:\Users\badiy\SillyBunny-Canary` on port 4445
+- Canonical repository: `https://github.com/cspiritsong/sillybunny-workspace`.
+- Local source checkout: `/home/badi/projects/sillybunny-workspace`.
+- Host reference (read-only): `/home/badi/projects/sillybunny-dev/repo`.
+- Windows stock: `C:\Users\badiy\SillyBunny` on port 4444.
+- Windows Canary: `C:\Users\badiy\SillyBunny-Canary` on port 4445.
+- SillyTavern is explicitly out of scope: never install or test this extension there.
 - First registered panes: chat (`#sheld`), AI settings (`#left-nav-panel`), Characters/World Info (`#right-nav-panel`).
 - First rails: SillyBunny shell tabs, character editor subtabs, panel action rows, World Info action rows, and selected dense preset/action rows.
 
 ## Rules
+- SillyBunny-only plugin. Never install or test it in SillyTavern.
+- The GitHub repository is canonical. Every installed copy must come from a committed and pushed revision; installed folders are not edited directly.
 - Opt-in workspace; opening it is reversible and disabling restores the original DOM.
 - No heavy framework or continuous polling.
 - Default layouts: side-by-side three columns; vertical stack; A+B over spanning C.
@@ -26,4 +31,5 @@ Deliver a lightweight extension that turns approved dense menus into single-row 
 5. Physical phone verifies swipe, touch arrangement, stacking, maximize, and recovery.
 
 ## Approval boundary
-Local work and Badi-owned device testing are authorized. No public push, issue, PR, or maintainer contact without Badi's explicit approval.
+
+Routine commits and pushes to the canonical `cspiritsong/sillybunny-workspace` repository, plus installation/testing on Badi-owned SillyBunny instances, are authorized by Badi. Ask before releases, public announcements, maintainer contact, or upstream issues/PRs.

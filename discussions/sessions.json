@@ -1,0 +1,13 @@
+{
+    "project": "sillybunny-workspace",
+    "updated": "2026-09-04",
+    "discussions": [
+        {
+            "id": 1,
+            "date": "2026-09-04",
+            "slug": "git-first-delivery-loop",
+            "path": "01-git-first-delivery-loop.md",
+            "decision": "Canonical GitHub source; SillyBunny-only install; Canary, stock, then phone testing."
+        }
+    ]
+}

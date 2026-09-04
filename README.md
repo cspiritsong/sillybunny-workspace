@@ -1,6 +1,6 @@
 # SillyBunny Workspace
 
-A lightweight, opt-in UI extension for [SillyBunny](https://github.com/SillyBunnyTeam/SillyBunny) (and compatible with SillyTavern) that does two things:
+A lightweight, opt-in UI extension for [SillyBunny](https://github.com/SillyBunnyTeam/SillyBunny) that does two things:
 
 1. **Overflow rails** — turns whitelisted dense action/tab rows into a single scrollable row with conditional `‹` / `›` arrows, no wrapping, no clipped controls.
 2. **Dockable workspace** — lets you tile, move, resize, maximize, hide, and reorder the major panels (Chat, AI Settings, Characters/World Info) and switch between layout presets.
@@ -17,7 +17,11 @@ Everything is reversible: closing the workspace (or disabling the extension) res
 
 ## Install
 
-Third-party extension, install from this folder or a git URL in SillyBunny's Extensions panel.
+Install in **SillyBunny only** from the canonical Git repository:
+
+`https://github.com/cspiritsong/sillybunny-workspace`
+
+Do not install or test this extension in SillyTavern. Installed copies are deployment targets; make every change in this repository, commit and push it, then update the SillyBunny installation.
 
 ## Test
 
