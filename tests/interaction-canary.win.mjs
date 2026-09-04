@@ -11,7 +11,7 @@ const require = createRequire(import.meta.url);
 const pwPath = require.resolve('C:/Users/badiy/AppData/Local/hermes-workspace-tools/node_modules/playwright');
 const { chromium } = await import(pathToFileURL(path.join(path.dirname(pwPath), 'index.mjs')).href);
 
-const URL = 'http://127.0.0.1:4445/';
+const URL = process.env.SWS_TARGET_URL || 'http://127.0.0.1:4445/';
 const results = [];
 const record = (name, ok, detail = '') => {
     results.push({ name, ok, detail });

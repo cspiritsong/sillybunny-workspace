@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Verified — Windows Canary complete on v0.1.3.** Public repository `https://github.com/cspiritsong/sillybunny-workspace` is canonical. Canary clean-cloned exact tip `73f0a62d431b48740dda14498971c785503dc36a`; 7/7 live-load and 13/13 interaction checks pass. Visual screenshots confirm full-width columns/stack, visible host content, and no material overlap or clipping. Next gate: install the same verified revision into Windows SillyBunny stock (4444).
+**Verified — Windows Canary and stock complete on v0.1.3.** Public repository `https://github.com/cspiritsong/sillybunny-workspace` is canonical. Canary and stock both passed 7/7 live-load plus 13/13 interaction checks; reviewed 1280×900 Columns/Stack screenshots show full-width panes, visible host content, and no material overlap or clipping. Next gate: physical-phone discovery and touch/mobile verification.
 
 ## Delivery loop
 
@@ -46,10 +46,14 @@ Installed copies are never edited directly. SillyTavern is never used as an inst
 - [x] Visual evidence: 1280×900 Columns and Stack screenshots reviewed; root spans 1264/1280px, each column is 417px, all host width/height deltas are 0px, and no material overlap/clipping remains.
 - [x] Record failures with exact steps and browser console evidence; fixed case-colliding packaging, activate-hook mount, and docked-host sizing in v0.1.1–v0.1.3.
 
-### Stage 3 — Windows stock (port 4444)
+### Stage 3 — Windows stock (port 4444) — VERIFIED
 
-- [ ] Install/update from the same verified Git revision.
-- [ ] Repeat the Canary acceptance matrix without editing the installed copy.
+- [x] Preserve five pre-existing untracked SillyBunny repro artifacts; none touched.
+- [x] Clean-clone canonical Git repo into stock user extensions; checkout clean, manifest v0.1.3.
+- [x] Complete pre-existing first-run gate while preserving persona value `User`; skip unrelated Quick Image Gen wizard; settings save returned HTTP 200.
+- [x] Live-load gate: 7/7 passed.
+- [x] Interaction gate: 13/13 passed (same matrix as Canary, including reload persistence).
+- [x] Visual gate: Columns and Stack screenshots reviewed; all panes full width, host content visible, no material clipping/overlap/blank-pane failure.
 
 ### Stage 4 — Physical phone
 

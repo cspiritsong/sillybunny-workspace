@@ -9,14 +9,19 @@ const browser = await chromium.launch({ headless: true, executablePath: 'C:\\Use
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const errors = [];
 page.on('pageerror', (e) => errors.push(String(e)));
-await page.goto('http://127.0.0.1:4445/', { waitUntil: 'commit', timeout: 30000 });
+const targetUrl = process.env.SWS_TARGET_URL || 'http://127.0.0.1:4445/';
+await page.goto(targetUrl, { waitUntil: 'commit', timeout: 30000 });
 await page.waitForTimeout(30000);
 
+const personaValue = await page.locator('dialog[open] .popup-input').inputValue().catch(() => '');
+console.log('PERSONA_VALUE=' + JSON.stringify(personaValue));
 const save = page.locator('.popup-button-ok.result-control', { hasText: 'Save' }).last();
 const saveVisible = await save.isVisible().catch(() => false);
-if (saveVisible) {
+if (saveVisible && personaValue.trim()) {
     await save.click({ force: true });
-    console.log('WELCOME_SAVE=clicked');
+    console.log('WELCOME_SAVE=clicked-preserving-existing-value');
+} else if (saveVisible) {
+    throw new Error('Welcome persona value is empty; refusing to invent one.');
 } else {
     console.log('WELCOME_SAVE=already-complete-or-not-visible');
 }

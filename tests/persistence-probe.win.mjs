@@ -19,7 +19,8 @@ page.on('response', (r) => { if (r.url().includes('/api/settings/save')) saves.p
 page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errors.push(`[${m.type()}] ${m.text()}`); });
 page.on('pageerror', (e) => errors.push(`[pageerror] ${e}`));
 
-await page.goto('http://127.0.0.1:4445/', { waitUntil: 'commit', timeout: 30000 });
+const targetUrl = process.env.SWS_TARGET_URL || 'http://127.0.0.1:4445/';
+await page.goto(targetUrl, { waitUntil: 'commit', timeout: 30000 });
 for (let i = 0; i < 10; i++) {
     if (await page.evaluate(() => !!window.SillyTavern?.getContext?.() && !!document.getElementById('sws-settings')).catch(() => false)) break;
     await page.waitForTimeout(5000);
