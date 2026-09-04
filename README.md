@@ -32,4 +32,4 @@ npm run test:browser  # headless harness (Playwright on the host)
 
 ## Status
 
-Local engine + harness verified. Pending: Windows stock (4444) + Canary (4445), then a physical phone.
+Canonical public repository live at `https://github.com/cspiritsong/sillybunny-workspace`, version `0.1.0`. Local engine + harness verified. Next: install from Git on Windows SillyBunny Canary (4445), then SillyBunny stock (4444), then a physical phone.

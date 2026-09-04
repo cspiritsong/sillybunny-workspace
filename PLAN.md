@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Prepared for canonical Git publication.** Local implementation commit `d968ac7` was verified before this Git-first workflow decision. Documentation and scope corrections are currently uncommitted until the next verification gate.
+**Verified — canonical repository is live.** Public repository `https://github.com/cspiritsong/sillybunny-workspace` was read back with default branch `main`, cspiritsong commit authorship, and live `manifest.json` version `0.1.0`. Next gate: install this exact Git source into SillyBunny Canary on Windows.
 
 ## Delivery loop
 
@@ -25,13 +25,13 @@ Installed copies are never edited directly. SillyTavern is never used as an inst
 
 ## Active stage
 
-### Stage 1 — Canonical repository
+### Stage 1 — Canonical repository — VERIFIED
 
-- [ ] Re-run tests and lint after documentation/scope edits.
-- [ ] Rename local default branch to `main`.
-- [ ] Create `cspiritsong/sillybunny-workspace` as the canonical GitHub repository.
-- [ ] Push `main` through the cspiritsong credential lane.
-- [ ] Read back repository visibility, default branch, tip SHA, and raw `manifest.json`.
+- [x] Re-run tests and lint after documentation/scope edits.
+- [x] Rename local default branch to `main`.
+- [x] Create public `cspiritsong/sillybunny-workspace` as the canonical GitHub repository.
+- [x] Push `main` through the verified cspiritsong credential lane.
+- [x] Read back repository visibility, default branch, tip SHA, cspiritsong authorship, and raw `manifest.json` v0.1.0.
 
 ### Stage 2 — Windows Canary (port 4445)
 
